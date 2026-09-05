@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------
+# Assets originais (brutos)
+# ---------------------------------------------------------------
+# Ficam na sua máquina, mas fora do repositório: somam ~30MB dos 36MB
+# do projeto e nenhum deles é usado pelo site. As versões otimizadas
+# que o site realmente carrega estão versionadas em assets/.
+#
+#   wallpaper video forex.mp4 (23MB) -> assets/video/hero-bg.mp4 / .webm
+#   wallpaper forex.png       (6MB)  -> assets/img/hero-bg.jpg
+#   foto perfil thales.jpg           -> assets/img/thales.jpg (arquivo idêntico)
+#
+# IMPORTANTE: guarde uma cópia desses originais em outro lugar (Drive,
+# HD externo), porque eles NAO vao para o GitHub. Se quiser versiona-los,
+# basta apagar as tres linhas abaixo.
+wallpaper video forex.mp4
+wallpaper forex.png
+foto perfil thales.jpg
+
+# ---------------------------------------------------------------
+# Dependencias / ferramentas
+# ---------------------------------------------------------------
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# ---------------------------------------------------------------
+# Sistema operacional / editores
+# ---------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
