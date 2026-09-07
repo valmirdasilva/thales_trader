@@ -1,2 +1,18 @@
-# Auto detect text files and perform LF normalization
+# Normaliza fim de linha: LF no repositorio, nativo no working tree.
+# Evita que o Windows gere diffs falsos de arquivo inteiro (CRLF vs LF).
 * text=auto
+
+*.html text
+*.css  text
+*.js   text
+*.md   text
+
+# Binarios: nunca aplicar conversao de fim de linha
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.mp4  binary
+*.webm binary
+*.ico  binary
