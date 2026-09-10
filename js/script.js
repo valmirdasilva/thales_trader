@@ -1,38 +1,21 @@
 // ---------------------------------------------------------------
-// Funil de conversão: só existe UM link externo de verdade na página
-// — o botão de WhatsApp no final (id="whatsapp-final"). Todos os
-// outros CTAs ("btn-checkout") são âncoras que rolam até ele.
-//
-// Quando o link de pagamento existir, é só trocar o destino aqui
-// embaixo (WHATSAPP_URL, ou apontar direto pro checkout) e todos os
-// botões da página seguem o novo destino de uma vez.
+// CTAs: todo botão de ação abre a MESMA conversa no WhatsApp.
+// Mude o número ou a mensagem aqui, num lugar só.
 // ---------------------------------------------------------------
 const WHATSAPP_NUMBER = '5554991395159';
-const WHATSAPP_MESSAGE = 'Olá! Quero saber mais sobre a mentoria ao vivo com o Thales.';
+const WHATSAPP_MESSAGE = 'Oi, Thales! Vi a página da mentoria e quero saber mais sobre a próxima turma.';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-const whatsappBtn = document.getElementById('whatsapp-final');
-if (whatsappBtn) {
-  whatsappBtn.setAttribute('href', WHATSAPP_URL);
-}
+const WHATSAPP_ICON =
+  '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">' +
+  '<path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.83L2 22l5.36-1.35c1.38.75 2.96 1.18 4.68 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.05 2h-.01zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.37 1.47.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.64-.14.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.69-.17 1.37z"/></svg>';
 
-document.querySelectorAll('.btn-checkout').forEach(btn => {
-  btn.setAttribute('href', '#whatsapp-final');
+document.querySelectorAll('.btn-checkout, .btn-whatsapp').forEach(btn => {
+  btn.setAttribute('href', WHATSAPP_URL);
+  btn.setAttribute('target', '_blank');
+  btn.setAttribute('rel', 'noopener');
+  if (!btn.querySelector('svg')) btn.insertAdjacentHTML('afterbegin', WHATSAPP_ICON);
 });
-
-// Ao clicar em qualquer CTA secundário, a página rola até o botão de
-// WhatsApp — esse destaque breve deixa claro que é ali que a ação
-// acontece, já que o clique não abre nada na hora.
-if (whatsappBtn) {
-  document.querySelectorAll('.btn-checkout').forEach(btn => {
-    btn.addEventListener('click', () => {
-      whatsappBtn.classList.remove('is-highlighted');
-      void whatsappBtn.offsetWidth; // reinicia a animação se clicar de novo
-      whatsappBtn.classList.add('is-highlighted');
-      setTimeout(() => whatsappBtn.classList.remove('is-highlighted'), 1600);
-    });
-  });
-}
 
 // Footer year
 const yearEl = document.getElementById('year');
@@ -41,8 +24,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // Reveal-on-scroll for sections/cards
 const revealTargets = document.querySelectorAll(
   '.card, .section__head, .split__media, .split__copy, .cta__box, ' +
-  '.pain, .step, .offer, .faq__item, .promises__col, .founder-note, ' +
-  '.proof-carousel-wrap, .statement__text'
+  '.pain, .turma-facts, .offer, .faq__item, .promises__col, .founder-note, ' +
+  '.proof-carousel-wrap, .statement__text, .section__cta'
 );
 revealTargets.forEach(el => el.setAttribute('data-reveal', ''));
 

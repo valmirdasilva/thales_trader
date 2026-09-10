@@ -13,16 +13,9 @@
 </head>
 <body>
 <!--
-  FUNIL DE CONVERSÃO:
-  Só existe UM link externo de verdade na página: o botão de WhatsApp
-  no final (id="whatsapp-final"). Todo o resto dos botões de ação usa a
-  classe "btn-checkout" e é apenas uma âncora que rola a página até ele
-  — assim, quando o checkout de pagamento existir, é só trocar o destino
-  em js/script.js (WHATSAPP_URL ou o próprio #whatsapp-final) e todos os
-  botões da página seguem o novo destino de uma vez.
-
-  Campos marcados com [EXEMPLO] ou [EDITAR] são conteúdo de
-  preenchimento (preço, formato da turma, FAQ) para substituir depois.
+  CTAs: todos os botões de ação (classe "btn-checkout" e "btn-whatsapp")
+  abrem a MESMA conversa no WhatsApp. O número e a mensagem ficam em
+  js/script.js (WHATSAPP_NUMBER / WHATSAPP_MESSAGE) — mude num lugar só.
 -->
 
 <div class="noise"></div>
@@ -57,14 +50,11 @@
         <ul class="trust-row">
           <li>Turma fechada e limitada</li>
           <li>Aulas 100% ao vivo</li>
-          <li>Acompanhamento direto com o Thales</li>
+          <li>Acompanhamento direto comigo</li>
         </ul>
       </div>
     </div>
 
-    <a href="#dores" class="scroll-cue" aria-label="Rolar para baixo">
-      <span></span>
-    </a>
   </section>
 
   <!-- FRASE DE POSICIONAMENTO -->
@@ -103,8 +93,13 @@
 
     <p class="dores__closing">
       No final, o problema não é falta de informação. É falta de um <strong>processo</strong>.
-      Você vai sair sabendo abrir o gráfico e saber exatamente o que está procurando.
+      Você vai sair sabendo abrir o gráfico e entendendo exatamente o que está procurando.
     </p>
+
+    <div class="section__cta">
+      <p>É esse processo que eu vou te ensinar, do zero, ao vivo.</p>
+      <a class="btn btn--primary btn--lg btn-checkout" href="#">Quero minha vaga na turma</a>
+    </div>
   </section>
 
   <!-- O QUE VOCÊ VAI APRENDER -->
@@ -128,9 +123,8 @@
           <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M3 17h4v-6H3v6zm7 0h4V7h-4v10zm7 0h4v-3h-4v3z"/></svg>
         </div>
         <h3>Quebra de estrutura</h3>
-        <p>O método próprio de leitura de mercado criado pelo Thales, pra
-        operar sem precisar ficar horas e horas em frente ao gráfico.
-        Descomplicado e eficaz.</p>
+        <p>O ponto de partida do que eu opero. Ler onde a estrutura do
+        preço se rompe e o que costuma vir depois desse rompimento.</p>
       </article>
 
       <article class="card">
@@ -153,11 +147,11 @@
 
       <article class="card">
         <div class="card__icon">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 6h11M4 12h16M4 18h7"/></svg>
         </div>
-        <h3>Foco em resultado</h3>
-        <p>Menos tempo de tela, mais direção. Eficácia sem complicação:
-        um método que faz sentido no dia a dia de quem opera.</p>
+        <h3>Saber quando não operar também é operar</h3>
+        <p>Parte do método é aprender a identificar uma oportunidade. A
+        outra parte é entender quando ela simplesmente não existe.</p>
       </article>
 
     </div>
@@ -167,31 +161,35 @@
   <section class="section" id="como-funciona">
     <div class="section__head">
       <p class="tag">Como funciona</p>
-      <h2>Uma turma. <span class="accent">Ao vivo, do início ao fim.</span></h2>
+      <h2>Uma turma. <span class="accent">De 9/11 a 1/12.</span></h2>
+      <p class="section__head-text">
+        Tudo ao vivo, comigo. Sem módulo gravado pra assistir sozinho e
+        travar na primeira dúvida.
+      </p>
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <span class="step__n">01</span>
-        <h3>Turma fechada e limitada</h3>
-        <p>[EXEMPLO] Vagas reduzidas para manter o acompanhamento próximo de cada aluno.</p>
+    <dl class="turma-facts">
+      <div class="turma-fact">
+        <dt>Duração</dt>
+        <dd>De 09/11 a 01/12.</dd>
       </div>
-      <div class="step">
-        <span class="step__n">02</span>
-        <h3>Aulas 100% ao vivo</h3>
-        <p>[EXEMPLO] Encontros ao vivo com o Thales, do básico ao avançado, com espaço pra tirar dúvida na hora.</p>
+      <div class="turma-fact">
+        <dt>Encontros</dt>
+        <dd>Toda segunda e terça, às 5h30 da manhã. Dois por semana, ao vivo.</dd>
       </div>
-      <div class="step">
-        <span class="step__n">03</span>
-        <h3>Grupo de suporte</h3>
-        <p>[EXEMPLO] Acompanhamento direto entre as aulas para tirar dúvidas do dia a dia operando.</p>
+      <div class="turma-fact">
+        <dt>Suporte</dt>
+        <dd>Comigo no WhatsApp, 24 horas por dia, durante toda a turma.</dd>
       </div>
-      <div class="step">
-        <span class="step__n">04</span>
-        <h3>Acesso às gravações</h3>
-        <p>[EXEMPLO] Todo encontro ao vivo fica gravado, caso não dê pra assistir no horário.</p>
+      <div class="turma-fact">
+        <dt>Gravações</dt>
+        <dd>Cada encontro fica disponível por 1 semana, caso você não assista ao vivo.</dd>
       </div>
-    </div>
+      <div class="turma-fact">
+        <dt>Vagas</dt>
+        <dd>Turma limitada a 30 alunos.</dd>
+      </div>
+    </dl>
   </section>
 
   <!-- O QUE EU NÃO VOU TE PROMETER -->
@@ -224,6 +222,11 @@
     </div>
 
     <p class="promises__footer">O resto depende de tela, prática, disciplina e tempo.</p>
+
+    <div class="section__cta">
+      <p>Se isso faz sentido pra você, a turma começa dia 9 de novembro.</p>
+      <a class="btn btn--primary btn--lg btn-checkout" href="#">Quero minha vaga na turma</a>
+    </div>
   </section>
 
   <!-- PARA QUEM / PUBLICO -->
@@ -256,7 +259,7 @@
         <li>Traders que já operam e querem simplificar a rotina</li>
         <li>Quem busca um método replicável, não "achismo"</li>
       </ul>
-      <a class="btn btn--primary btn-checkout" href="#">Quero fazer parte da turma</a>
+      <a class="btn btn--primary btn--lg btn-checkout" href="#">Quero fazer parte da turma</a>
     </div>
   </section>
 
@@ -289,30 +292,42 @@
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
       </button>
     </div>
+
+    <div class="section__cta">
+      <p>Quer perguntar algo antes de decidir? Me chama no WhatsApp.</p>
+      <a class="btn btn--primary btn--lg btn-checkout" href="#">Falar comigo no WhatsApp</a>
+    </div>
+
     <p class="testimonials__note">Arraste para o lado para ver mais. Prints reais, tirados do grupo de alunos. Resultados individuais. Rentabilidade passada não garante resultados futuros.</p>
   </section>
 
   <!-- OFERTA -->
   <section class="section" id="oferta">
     <div class="offer">
-      <div class="offer__badge">Próxima turma · vagas limitadas</div>
+      <div class="offer__badge">Próxima turma</div>
       <h2>Mentoria Ao Vivo <span class="accent">Thales Ramos</span></h2>
-      <p class="offer__desc">Turma fechada, 100% ao vivo, do básico ao avançado no método próprio de leitura de mercado Forex.</p>
+      <p class="offer__desc">Turma de 09/11 a 01/12, tudo ao vivo, do zero ao avançado.</p>
 
       <ul class="offer__list">
-        <li>Encontros ao vivo com o Thales [EXEMPLO]</li>
-        <li>Grupo de suporte durante a turma [EXEMPLO]</li>
-        <li>Acesso às gravações das aulas [EXEMPLO]</li>
-        <li>Material de apoio do método [EXEMPLO]</li>
+        <li>2 encontros ao vivo por semana, segunda e terça às 5h30</li>
+        <li>Suporte comigo no WhatsApp, 24/7, durante toda a turma</li>
+        <li>Gravação de cada encontro disponível por 1 semana</li>
+        <li>Turma limitada a 30 alunos</li>
       </ul>
 
       <div class="offer__price">
-        <span class="offer__price-label">Investimento</span>
-        <span class="offer__price-value">[EDITAR VALOR]</span>
+        <span class="offer__price-label">Valor</span>
+        <span class="offer__price-value">R$ 599,90</span>
+        <span class="offer__price-sub">à vista, ou 10x de R$ 59,99 no cartão</span>
       </div>
 
-      <a class="btn btn--primary btn--lg btn-checkout" href="#">Garantir minha vaga agora</a>
-      <p class="offer__note">Sua vaga é confirmada em conversa direta comigo no WhatsApp. [EDITAR: forma de pagamento / parcelamento]</p>
+      <div class="offer__guarantee">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
+        <p><strong>Garantia de 1 semana.</strong> Se depois da primeira semana de aula você não gostar do método, devolvo o seu dinheiro.</p>
+      </div>
+
+      <a class="btn btn--primary btn--lg btn-whatsapp" href="#">Falar comigo no WhatsApp</a>
+      <p class="offer__note">A vaga é confirmada em conversa direta comigo no WhatsApp.</p>
     </div>
   </section>
 
@@ -326,21 +341,31 @@
     <div class="faq">
       <div class="faq__item">
         <button class="faq__question" aria-expanded="false">
-          Preciso já conhecer o mercado Forex para entrar na turma?
+          Preciso já conhecer o mercado Forex pra entrar na turma?
           <span class="faq__icon"></span>
         </button>
         <div class="faq__answer">
-          <p>[EXEMPLO] Não. A mentoria foi construída do básico ao avançado, então serve tanto para quem nunca operou quanto para quem já conhece o mercado.</p>
+          <p>Não. A turma vai do zero ao avançado. Serve tanto pra quem nunca operou quanto pra quem já opera e quer simplificar a leitura.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <button class="faq__question" aria-expanded="false">
-          As aulas são gravadas ou ao vivo?
+          Quando começa e qual o horário?
           <span class="faq__icon"></span>
         </button>
         <div class="faq__answer">
-          <p>[EXEMPLO] Todos os encontros são 100% ao vivo, com espaço para tirar dúvida na hora. As aulas também ficam gravadas para quem não puder assistir no horário.</p>
+          <p>A turma vai de 09/11 a 01/12. Os encontros são toda segunda e terça, às 5h30 da manhã, dois por semana.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" aria-expanded="false">
+          As aulas são ao vivo ou gravadas?
+          <span class="faq__icon"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Todos os encontros são 100% ao vivo, com espaço pra tirar dúvida na hora. Cada um fica gravado e disponível por 1 semana, caso você não consiga assistir no horário.</p>
         </div>
       </div>
 
@@ -350,27 +375,27 @@
           <span class="faq__icon"></span>
         </button>
         <div class="faq__answer">
-          <p>[EXEMPLO] As turmas são fechadas e com número limitado de vagas para manter o acompanhamento próximo de cada aluno.</p>
+          <p>30. É pouca gente de propósito, pra eu conseguir acompanhar a evolução de cada aluno de perto.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <button class="faq__question" aria-expanded="false">
-          Como funciona o pagamento?
+          Como funciona o suporte?
           <span class="faq__icon"></span>
         </button>
         <div class="faq__answer">
-          <p>[EDITAR] Informações sobre forma de pagamento, parcelamento e gateway utilizado.</p>
+          <p>Direto comigo no WhatsApp, 24 horas por dia, durante toda a turma. Dúvida no meio de uma operação, você me manda.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <button class="faq__question" aria-expanded="false">
-          Tem algum tipo de garantia?
+          Como é o pagamento e tem garantia?
           <span class="faq__icon"></span>
         </button>
         <div class="faq__answer">
-          <p>[EDITAR] Informações sobre política de garantia/reembolso, se houver.</p>
+          <p>R$ 599,90 à vista, ou em até 10x de R$ 59,99 no cartão. Tem garantia: se depois da primeira semana de aula você não gostar do método, devolvo o seu dinheiro.</p>
         </div>
       </div>
     </div>
@@ -384,7 +409,7 @@
       <p class="cta__text">Garanta sua vaga na mentoria ao vivo antes que a turma feche.</p>
       <a class="btn btn--primary btn--lg btn-whatsapp" id="whatsapp-final" href="#" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.83L2 22l5.36-1.35c1.38.75 2.96 1.18 4.68 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.05 2h-.01zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.37 1.47.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.64-.14.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.69-.17 1.37z"/></svg>
-        Falar com o Thales no WhatsApp
+        Falar comigo no WhatsApp
       </a>
     </div>
   </section>

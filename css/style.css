@@ -154,8 +154,9 @@ main, footer{ position:relative; z-index:1; }
 .btn--ghost:hover{ border-color:var(--red); color:var(--red-2); transform:translateY(-2px); }
 .btn--lg{ padding:1.15rem 2.2rem; font-size:1.02rem; }
 
-/* the one real external CTA — WhatsApp green so it reads as its own
-   distinct action, different from the in-page anchor buttons */
+/* WhatsApp green — reserved for the two "decide agora" buttons (oferta e
+   CTA final). The gentle breathing glow keeps it drawing the eye without
+   a hard call-out. Every other CTA stays red/primary. */
 .btn-whatsapp{
   background:linear-gradient(135deg, #25D366 0%, #128C4A 100%);
   box-shadow:0 8px 24px -6px rgba(37,211,102,.5);
@@ -165,36 +166,9 @@ main, footer{ position:relative; z-index:1; }
   box-shadow:0 14px 32px -6px rgba(37,211,102,.65);
   animation-play-state:paused;
 }
-/* continuous, gentle "breathing" glow so the real CTA keeps drawing the
-   eye even when nobody has clicked a secondary button yet */
 @keyframes whatsapp-breathe{
   0%, 100%{ box-shadow:0 8px 24px -6px rgba(37,211,102,.5), 0 0 0 0 rgba(37,211,102,.35); }
   50%{ box-shadow:0 8px 24px -6px rgba(37,211,102,.8), 0 0 0 12px rgba(37,211,102,0); }
-}
-/* stronger, one-shot ring when a secondary CTA scrolls the page here —
-   overrides the breathing animation for its short duration */
-.btn-whatsapp.is-highlighted{
-  animation:whatsapp-pulse 1.6s ease-out;
-}
-@keyframes whatsapp-pulse{
-  0%{ box-shadow:0 0 0 0 rgba(37,211,102,.7); }
-  70%{ box-shadow:0 0 0 22px rgba(37,211,102,0); }
-  100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
-}
-
-.scroll-cue{
-  position:absolute; z-index:1; bottom:2.4rem; left:50%; transform:translateX(-50%);
-  width:26px; height:42px; border-radius:20px;
-  border:2px solid var(--card-bd);
-  display:flex; justify-content:center; padding-top:8px;
-}
-.scroll-cue span{
-  width:4px; height:8px; border-radius:2px; background:var(--red-2);
-  animation:scrolldown 1.6s ease infinite;
-}
-@keyframes scrolldown{
-  0%{ opacity:1; transform:translateY(0); }
-  100%{ opacity:0; transform:translateY(14px); }
 }
 
 .trust-row{
@@ -379,31 +353,31 @@ main, footer{ position:relative; z-index:1; }
 .dores__closing strong{ color:var(--text); }
 
 /* ===========================================================
-   STEPS — como funciona
+   TURMA FACTS — ficha da turma (datas, horário, suporte...)
+   Não é uma sequência de passos, então é uma lista de definições,
+   não cards numerados.
 =========================================================== */
-.steps{
-  display:grid; gap:1.3rem;
-  grid-template-columns:1fr;
-}
-@media (min-width:640px){ .steps{ grid-template-columns:1fr 1fr; } }
-@media (min-width:1024px){ .steps{ grid-template-columns:repeat(4,1fr); } }
-
-.step{
-  padding:1.9rem 1.6rem;
+.turma-facts{
+  max-width:640px; margin:0 auto;
+  border:1px solid var(--card-bd); border-radius:var(--radius);
   background:var(--card);
-  border:1px solid var(--card-bd);
-  border-radius:var(--radius);
+  overflow:hidden;
 }
-.step__n{
-  display:block;
-  font-family:var(--ff-display);
-  font-size:2rem;
-  color:var(--red);
-  text-shadow:0 0 20px var(--ring);
-  margin-bottom:.4rem;
+.turma-fact{
+  display:grid; grid-template-columns:1fr; gap:.2rem;
+  padding:1.3rem 1.6rem;
+  border-top:1px solid var(--card-bd);
 }
-.step h3{ font-size:1.05rem; margin-bottom:.5rem; }
-.step p{ color:var(--muted); font-size:.92rem; }
+.turma-fact:first-child{ border-top:0; }
+.turma-fact dt{
+  font-size:.82rem; color:var(--red-2); font-weight:700;
+}
+.turma-fact dd{
+  margin:0; font-size:1rem; color:var(--text); line-height:1.5;
+}
+@media (min-width:560px){
+  .turma-fact{ grid-template-columns:30% 1fr; gap:1.6rem; align-items:baseline; }
+}
 
 /* ===========================================================
    PROMISES — "o que eu não vou / o que eu posso te prometer"
@@ -548,8 +522,8 @@ main, footer{ position:relative; z-index:1; }
 .offer h2{ font-size:clamp(1.6rem, 4vw, 2.2rem); }
 .offer__desc{ margin-top:.8rem; color:var(--muted); }
 .offer__list{
-  margin:1.8rem 0; display:flex; flex-direction:column; gap:.7rem;
-  text-align:left; max-width:400px; margin-left:auto; margin-right:auto;
+  margin:1.8rem auto; display:flex; flex-direction:column; gap:.7rem;
+  text-align:left; max-width:480px;
 }
 .offer__list li{
   position:relative; padding-left:1.8rem; font-size:.94rem;
@@ -566,9 +540,20 @@ main, footer{ position:relative; z-index:1; }
 .offer__price-label{ font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
 .offer__price-value{
   font-family:var(--ff-display);
-  font-size:2.4rem; color:var(--text);
+  font-size:2.6rem; color:var(--text);
   letter-spacing:.02em;
 }
+.offer__price-sub{ font-size:.85rem; color:var(--muted); }
+.offer__guarantee{
+  display:flex; gap:.85rem; align-items:flex-start; text-align:left;
+  max-width:420px; margin:0 auto 1.6rem;
+  padding:1rem 1.2rem;
+  border:1px solid var(--card-bd); border-radius:14px;
+  background:rgba(255,255,255,.02);
+}
+.offer__guarantee svg{ flex:0 0 auto; color:var(--red-2); margin-top:.15rem; }
+.offer__guarantee p{ font-size:.88rem; color:var(--muted); line-height:1.5; }
+.offer__guarantee strong{ color:var(--text); }
 .offer__note{ margin-top:1rem; font-size:.8rem; color:var(--muted); opacity:.8; }
 
 /* ===========================================================
@@ -610,9 +595,22 @@ main, footer{ position:relative; z-index:1; }
   color:var(--muted); font-size:.92rem;
 }
 .faq__item.is-open .faq__answer{
-  max-height:240px;
+  max-height:360px;
   opacity:1;
   transition:max-height .35s ease, opacity .4s ease .1s;
+}
+
+/* ===========================================================
+   SECTION CTA — nudge no meio da página, entre seções
+=========================================================== */
+.section__cta{
+  margin-top:2.8rem;
+  text-align:center;
+}
+.section__cta p{
+  margin:0 auto 1.3rem;
+  max-width:38ch;
+  color:var(--muted); font-size:1.02rem;
 }
 
 /* ===========================================================
