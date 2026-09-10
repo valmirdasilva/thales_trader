@@ -124,6 +124,7 @@ main, footer{ position:relative; z-index:1; }
   font-size:clamp(1rem, 2vw, 1.15rem);
   color:var(--muted);
 }
+.hero__subtitle strong{ color:var(--text); font-weight:700; }
 .hero__copy{ text-align:center; }
 .hero__actions{
   margin-top:2.2rem;
@@ -154,21 +155,25 @@ main, footer{ position:relative; z-index:1; }
 .btn--ghost:hover{ border-color:var(--red); color:var(--red-2); transform:translateY(-2px); }
 .btn--lg{ padding:1.15rem 2.2rem; font-size:1.02rem; }
 
-/* WhatsApp green — reserved for the two "decide agora" buttons (oferta e
-   CTA final). The gentle breathing glow keeps it drawing the eye without
-   a hard call-out. Every other CTA stays red/primary. */
+/* CTAs "respiram" — brilho pulsante suave que puxa o olhar sem virar
+   alarme. Vermelho na maioria; verde nos dois momentos de decisão
+   (oferta e CTA final). A cor do pulso vem de --cta-rgb. */
+.btn-checkout, .btn-whatsapp{
+  animation:cta-breathe 2.6s ease-in-out infinite;
+}
+.btn-checkout{ --cta-rgb:255,20,54; }
 .btn-whatsapp{
+  --cta-rgb:37,211,102;
   background:linear-gradient(135deg, #25D366 0%, #128C4A 100%);
   box-shadow:0 8px 24px -6px rgba(37,211,102,.5);
-  animation:whatsapp-breathe 2.6s ease-in-out infinite;
 }
-.btn-whatsapp:hover{
-  box-shadow:0 14px 32px -6px rgba(37,211,102,.65);
+.btn-checkout:hover, .btn-whatsapp:hover{
   animation-play-state:paused;
+  box-shadow:0 14px 32px -6px rgba(var(--cta-rgb),.7);
 }
-@keyframes whatsapp-breathe{
-  0%, 100%{ box-shadow:0 8px 24px -6px rgba(37,211,102,.5), 0 0 0 0 rgba(37,211,102,.35); }
-  50%{ box-shadow:0 8px 24px -6px rgba(37,211,102,.8), 0 0 0 12px rgba(37,211,102,0); }
+@keyframes cta-breathe{
+  0%, 100%{ box-shadow:0 8px 24px -6px rgba(var(--cta-rgb),.5), 0 0 0 0 rgba(var(--cta-rgb),.3); }
+  50%{ box-shadow:0 8px 24px -6px rgba(var(--cta-rgb),.85), 0 0 0 12px rgba(var(--cta-rgb),0); }
 }
 
 .trust-row{
@@ -658,6 +663,14 @@ main, footer{ position:relative; z-index:1; }
   transition:opacity .7s ease, transform .7s ease;
 }
 [data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+
+@media (max-width:560px){
+  .btn--lg{
+    width:100%;
+    justify-content:center;
+    padding:1.05rem 1.1rem;
+  }
+}
 
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; }
